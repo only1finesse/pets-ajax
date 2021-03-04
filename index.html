@@ -8,16 +8,32 @@
     <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
     <script type="text/javascript">
         $("document").ready(function () {
-            
+
             $("#pet_likes").hide();
             $("#pet_eats").hide();
+            $("#pet_name").hide();
+            $("button").hide();
 
 
-            $("#pet_feels").click(function(e){
-
+            $("#pet_feels").click(function (e) {
+                //if this button is clicked, the next (hidden) one will slide down
+                $("#pet_likes").slideDown(200);
             });
 
+            $("#pet_likes").click(function (e) {
+                //if this button is clicked, the next (hidden) one will slide down
+                $("#pet_eats").slideDown(200);
+            });
 
+            $("#pet_eats").click(function (e) {
+                //if this button is clicked, the next (hidden) one will slide down
+                $("#pet_name").slideDown(200);
+            });
+
+            $("#pet_name").click(function (e) {
+                //if this button is clicked, the next (hidden) one will slide down
+                $("button").slideDown(200);
+            });
 
 
             $('#myForm').submit(function (e) {
@@ -27,20 +43,127 @@
                 let feels = $("input[name=feels]:checked").val();
                 let likes = $("input[name=likes]:checked").val();
                 let eats = $("input[name=eats]:checked").val();
+                let names = $("input[name=names]").val();
+                let pet = ""; // to store the pet 
+                let pic = ""; // to store the pt image
                 // alert(likes);
 
-                if(feels == "fluffy" && likes == "petted" && eats == "carrots"){
-                    alert("What's up doc?");
+                // for fluffy pets
+                if (feels == "fluffy" && likes == "petted" && eats == "plants") {
+                    pet = "rabbit";
                 }
+                if (feels == "fluffy" && likes == "petted" && eats == "meat") {
+                    pet = "dog";
+                }
+                if (feels == "fluffy" && likes == "petted" && eats == "everything") {
+                    pet = "bear";
+                }
+                if (feels == "fluffy" && likes == "ridden" && eats == "plants") {
+                    pet = "horse";
+                }
+                if (feels == "fluffy" && likes == "ridden" && eats == "meat") {
+                    pet = "sabertooth";
+                }
+                if (feels == "fluffy" && likes == "ridden" && eats == "everything") {
+                    pet = "gorilla";
+                }
+                if (feels == "fluffy" && likes == "alone" && eats == "plants") {
+                    pet = "bull";
+                }
+                if (feels == "fluffy" && likes == "alone" && eats == "meat") {
+                    pet = "cat";
+                }
+                if (feels == "fluffy" && likes == "alone" && eats == "everything") {
+                    pet = "hippo";
+                }
+
+                // for scaly pets
+                if (feels == "scaly" && likes == "petted" && eats == "plants") {
+                    pet = "stegosaurus";
+                }
+                if (feels == "scaly" && likes == "petted" && eats == "meat") {
+                    pet = "crocodile";
+                }
+                if (feels == "scaly" && likes == "petted" && eats == "everything") {
+                    pet = "iguana";
+                }
+                if (feels == "scaly" && likes == "ridden" && eats == "plants") {
+                    pet = "brachiosaurus";
+                }
+                if (feels == "scaly" && likes == "ridden" && eats == "meat") {
+                    pet = "velociraptor";
+                }
+                if (feels == "scaly" && likes == "ridden" && eats == "everything") {
+                    pet = "tortoise";
+                }
+                if (feels == "scaly" && likes == "alone" && eats == "plants") {
+                    pet = "snapping-turtle";
+                }
+                if (feels == "scaly" && likes == "alone" && eats == "meat") {
+                    pet = "cobra";
+                }
+                if (feels == "scaly" && likes == "alone" && eats == "everything") {
+                    pet = "komodo-dragon";
+                }
+
+                // for feathery pets
+                if (feels == "feathery" && likes == "petted" && eats == "plants") {
+                    pet = "parrot";
+                }
+                if (feels == "feathery" && likes == "petted" && eats == "meat") {
+                    pet = "eagle";
+                }
+                if (feels == "feathery" && likes == "petted" && eats == "everything") {
+                    pet = "raven";
+                }
+                if (feels == "feathery" && likes == "ridden" && eats == "plants") {
+                    pet = "ostrich";
+                }
+                if (feels == "feathery" && likes == "ridden" && eats == "meat") {
+                    pet = "pterodactyl";
+                }
+                if (feels == "feathery" && likes == "ridden" && eats == "everything") {
+                    pet = "griffin";
+                }
+                if (feels == "feathery" && likes == "alone" && eats == "plants") {
+                    pet = "elephant-bird";
+                }
+                if (feels == "feathery" && likes == "alone" && eats == "meat") {
+                    pet = "thunderbird";
+                }
+                if (feels == "feathery" && likes == "alone" && eats == "everything") {
+                    pet = "vulture";
+                }
+
+                // user pet infromation
 
                 let output = " ";
 
-                output += `<p> Your pet feels: ${feels}</p>`
-                output += `<p> Your pet likes to be: ${likes}</p>`
-                output += `<p> Your pet likes to eat: ${eats} </p>`
-  
+                output += `<p> Your pet feels: ${feels}</p>`;
+                output += `<p> Your pet likes to be: ${likes}</p>`;
+                output += `<p> Your pet likes to eat: ${eats} </p>`;
+                output += `<p> Your pet is a: ${pet} </p>`;
+                output += `<p> The name of your pet is ${eats} </p>`;
+
+                if (eats == "meat") {
+                    output += `<p>Say hello to ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you preferred  ${names} is a ${pet}, ${names} loves to much on some good meat!</p>`;
+                } else if (eats == "plants") {
+                    output += `<p>Say hello to ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you preferred  ${names} is a ${pet}, ${names} is quite the vegetarian!</p>`;
+                } else if (eats == "everything") {
+                    output += `<p>Say hello to ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you preferred  ${names} is a ${pet}, ${names} isn't picky and loves everything! </p>`;
+                } else {
+                    output += `<p>Say hello to ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you preferred  ${names} is a ${pet}!</p>`;
+                }
+
                 $("#output").html(output);
 
+                //to load pic of pet
+              $('#pet').load(`includes/content.html #${pet}`);
+
+               $("button").click(function(){
+                location.reload(true);
+               });
+               
                 e.preventDefault();//no need to submit as you'll be doing AJAX on this page
 
             });
