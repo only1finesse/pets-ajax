@@ -6,6 +6,7 @@
     <meta name="robots" content="noindex,nofollow">
     <title>AJAX Pet Starter</title>
     <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="includes/styles.css">
     <script type="text/javascript">
         $("document").ready(function () {
 
@@ -106,34 +107,7 @@
                     pet = "komodo-dragon";
                 }
 
-                // for feathery pets
-                if (feels == "feathery" && likes == "petted" && eats == "plants") {
-                    pet = "parrot";
-                }
-                if (feels == "feathery" && likes == "petted" && eats == "meat") {
-                    pet = "eagle";
-                }
-                if (feels == "feathery" && likes == "petted" && eats == "everything") {
-                    pet = "raven";
-                }
-                if (feels == "feathery" && likes == "ridden" && eats == "plants") {
-                    pet = "ostrich";
-                }
-                if (feels == "feathery" && likes == "ridden" && eats == "meat") {
-                    pet = "pterodactyl";
-                }
-                if (feels == "feathery" && likes == "ridden" && eats == "everything") {
-                    pet = "griffin";
-                }
-                if (feels == "feathery" && likes == "alone" && eats == "plants") {
-                    pet = "elephant-bird";
-                }
-                if (feels == "feathery" && likes == "alone" && eats == "meat") {
-                    pet = "thunderbird";
-                }
-                if (feels == "feathery" && likes == "alone" && eats == "everything") {
-                    pet = "vulture";
-                }
+               
 
                 // user pet infromation
 
@@ -143,14 +117,12 @@
                 output += `<p> Your pet likes to be: ${likes}</p>`;
                 output += `<p> Your pet likes to eat: ${eats} </p>`;
                 output += `<p> Your pet is a: ${pet} </p>`;
-                output += `<p> The name of your pet is ${eats} </p>`;
+                output += `<p> The name of your pet is ${names} </p>`;
 
                 if (eats == "meat") {
-                    output += `<p>Say hello to ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you preferred  ${names} is a ${pet}, ${names} loves to much on some good meat!</p>`;
+                    output += `<p>Say hello to ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you preferred  ${names} is a ${pet}, ${names} loves to munch on some good meat!</p>`;
                 } else if (eats == "plants") {
                     output += `<p>Say hello to ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you preferred  ${names} is a ${pet}, ${names} is quite the vegetarian!</p>`;
-                } else if (eats == "everything") {
-                    output += `<p>Say hello to ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you preferred  ${names} is a ${pet}, ${names} isn't picky and loves everything! </p>`;
                 } else {
                     output += `<p>Say hello to ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you preferred  ${names} is a ${pet}!</p>`;
                 }
@@ -158,12 +130,12 @@
                 $("#output").html(output);
 
                 //to load pic of pet
-              $('#pet').load(`includes/content.html #${pet}`);
+                $('#pet').load(`includes/content.html #${pet}`);
 
-               $("button").click(function(){
-                location.reload(true);
-               });
-               
+                $("button").click(function () {
+                    location.reload(true);
+                });
+
                 e.preventDefault();//no need to submit as you'll be doing AJAX on this page
 
             });
@@ -190,12 +162,21 @@
         <div id="pet_eats">
             <h3>Eats</h3>
             <p>Please tell us what your pet likes to eat:</p>
-            <input type="radio" name="eats" value="carrots"> carrots <br />
-            <input type="radio" name="eats" value="pets"> other people's pets <br />
+            <input type="radio" name="eats" value="plants"> Plants <br />
+            <input type="radio" name="eats" value="meat"> Meat<br />
+        </div>
+
+        </div>
+        <div id="pet_name">
+            <h3>Name</h3>
+            <p>Please tell us what you want to call your pet:</p>
+            <input type="text" name="names" required="required"> <br />
         </div>
 
         <input type="submit" value="submit it!" />
+        <div id = "pet">Pic of pet goes here.</div>
         <div id="output">Output goes here!</div>
+        <button type="button">Reload page</button>
     </form>
 </body>
 
