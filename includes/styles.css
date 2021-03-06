@@ -34,6 +34,7 @@ a:hover {text-decoration: none;}
 a:active {color: #f00;}
 
 img {
-  min-width: 40vh;
+  min-width: 30vh;
+  max-width: 40vh;
   align-items: center;
 }
